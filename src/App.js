@@ -1,8 +1,12 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import ApartmentsPage from "./pages/ApartmentsPage";
-import AddApartmentPage from "./pages/AddApartmentPage";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/ApartmentsPage";
+import RecipePage from "./pages/RecipePage";
+import AddRecipePage from "./pages/AddRecipePage";
+import IngredientPage from "./pages/IngredientPage";
+import ProfilePage from "./pages/ProfilePage";
 
 
 function App() {
@@ -11,8 +15,12 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<ApartmentsPage />} />
-        <Route path="/apartments/new" element={<AddApartmentPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/recipe" element={<RecipePage />} />
+        <Route path="/recipe/add" element={<AddRecipePage />} />
+        <Route path="/ingredient" element={<IngredientPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </div>
   );
