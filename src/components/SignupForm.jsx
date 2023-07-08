@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import authService from "../services/auth.service";
 
 const SignupForm = () => {
@@ -29,35 +29,35 @@ const SignupForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <form>
-        <form>Username</form>
-        <input>
+      <div>
+        <div>Username</div>
+        <input
           type="text"
           value={username}
           onChange={handleInputChange}
-          name="username"
+          name="username">
           </input>
-      </form>
+      </div>
 
-      <form>
-        <form>Password</form>
-        <input>
+      <div>
+        <label>Password</label>
+        <input
           type="password"
           value={password}
           onChange={handleInputChange}
-          name="password"
+          name="password">
           </input>
-      </form>
+      </div>
 
-      <form>
-        <form>Email</form>
-        <input>
+      <div>
+        <label>Email</label>
+        <input
           type="email"
           value={email}
           onChange={handleInputChange}
-          name="email"
+          name="email">
           </input>
-      </form>
+      </div>
 
       <div>
         <button colorScheme="teal" variant="solid" type="submit">

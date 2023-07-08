@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import authService from "../services/auth.service";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
     const [loginData, setLoginData] = useState({
@@ -37,30 +38,30 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       
-        <form>Email</form>
-        <input>
+        <label>Email</label>
+        <input
           type="email"
           value={email}
           onChange={handleInputChange}
-          name="email"
+          name="email">
           </input>
     
 
-      <form>
-        <form>Contraseña</form>
-        <input>
+      <div>
+        <label>Contraseña</label>
+        <input
           type="password"
           value={password}
           onChange={handleInputChange}
-          name="password"
+          name="password">
           </input>
-      </form>
+      </div>
 
       <div>
         <button variant="solid" type="submit">
           Login
         </button>
-        <link to="/signup">Signup</link>
+        <Link to="/signup">Signup</Link>
       </div>
       <p>{error}</p>
     </form>
