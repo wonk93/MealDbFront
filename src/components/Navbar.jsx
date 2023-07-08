@@ -8,7 +8,7 @@ function Navbar() {
       </NavLink>
       
       <NavLink to="/apartments/new">
-        <button>Add Apartment</button>
+        <button>Add</button>
       </NavLink>
     </nav>
   );

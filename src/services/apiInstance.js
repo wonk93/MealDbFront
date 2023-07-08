@@ -2,7 +2,7 @@ import axios from "axios";
 import { TOKEN_NAME } from "../context/auth.context";
 
 const apiInstace = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}` //cabiar la variable como esta en el back
+  baseURL: `${process.env.REACT_APP_API_URL}` //cabiar la variable como esta en el back
 });
 
 apiInstace.interceptors.request.use(config => {
