@@ -1,16 +1,16 @@
-import { Box, Button } from "@chakra-ui/react";
+// import { Box, Button } from "react-bootstrap";
 import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Auth() {
   return (
-    <Box>
+    <box>
       <Link to={"/login"}>
-        <Button>Login</Button>
+        <button>Login</button>
       </Link>
       <Link to={"/signup"}>
-        <Button>Signup</Button>
+        <button>Signup</button>
       </Link>
-    </Box>
+    </box>
   );
 }
