@@ -61,7 +61,9 @@ const LoginForm = () => {
         <button variant="solid" type="submit">
           Login
         </button>
-        <Link to="/signup">Signup</Link>
+        <Link to={"/signup"}>
+        <button>Signup</button>
+      </Link>
       </div>
       <p>{error}</p>
     </form>

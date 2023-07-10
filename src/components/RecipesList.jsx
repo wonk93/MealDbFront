@@ -103,7 +103,7 @@ function RecipesList() {
                         </td>
                         <td>Es una elaboración fría hecha con salmón, citricos, sal y azúcar.</td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <td>6</td>
                         <td>
                             <NavLink to="/recipe/6">
@@ -138,7 +138,7 @@ function RecipesList() {
                             <img src={ImgGazpacho} title="Gazpacho" alt="Gazpacho" />
                         </td>
                         <td>Es una elaboración fría hecha a base de tomate, aceite, pepino, cebolla, vinagre y sal.</td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </Table>
 

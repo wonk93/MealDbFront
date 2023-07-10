@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../services/auth.service";
+import { Link } from "react-router-dom";
 
 const SignupForm = () => {
   const [signupData, setSignupData] = useState({
@@ -63,7 +64,9 @@ const SignupForm = () => {
         <button colorScheme="teal" variant="solid" type="submit">
           Create user
         </button>
-        <link to="/login">Login</link>
+        <Link to={"/login"}>
+        <button>Login</button>
+      </Link>
       </div>
     </form>
   );
