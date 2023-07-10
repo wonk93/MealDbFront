@@ -3,6 +3,8 @@ import ImgAceite from './../img/aceite.jpg';
 import ImgFresas from './../img/fresas.jpeg';
 import ImgLubina from './../img/lubina.jpg';
 import ImgTomate from './../img/tomate.jpg';
+import ImgSalmon from './../img/salmón.jpg';
+import ImgSal from './../img/sal.jpg';
 import Table from 'react-bootstrap/Table';
 import { NavLink } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
@@ -95,6 +97,28 @@ function IngredientsList() {
                         </td>
                         <td>
                             <img src={ImgTomate} title="Tomate" alt="Tomate" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <NavLink to="/ingredient/6">
+                                <span>Sal</span>
+                            </NavLink>
+                        </td>
+                        <td>
+                            <img src={ImgSal} title="Sal" alt="Sal" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <NavLink to="/ingredient/7">
+                                <span>Salmon</span>
+                            </NavLink>
+                        </td>
+                        <td>
+                            <img src={ImgSalmon} title="Salmon" alt="Salmon" />
                         </td>
                     </tr>
                 </tbody>

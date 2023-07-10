@@ -1,3 +1,5 @@
+
+
 import React, { createContext, useEffect, useState } from "react";
 import authService from "../services/auth.service";
 
@@ -53,6 +55,7 @@ export const AuthContextWrapper = ({ children }) => {
         user,
         storeToken,
         authenticate,
+        setUser,
         logout,
         removeToken,
         error

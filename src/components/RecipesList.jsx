@@ -1,6 +1,8 @@
 import ImgTortilla from './../img/tortilla.jpg';
 import ImgCroquetas from './../img/croquetas.jpg';
 import ImgGazpacho from './../img/gazpacho.jpg';
+import ImgSalmorejo from './../img/salmorejo.jpg';
+import ImgSalmón from './../img/salmón_marinado.jpg';
 import Table from 'react-bootstrap/Table';
 import { NavLink } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
@@ -51,7 +53,7 @@ function RecipesList() {
                         <td>
                             <img src={ImgTortilla} title="Tortilla" alt="Tortilla" />
                         </td>
-                        <td>Bla bla bla bla bla bla bla.</td>
+                        <td>Es una elaboración típica española elaborada a base de patata, huevo y cebolla.</td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -63,7 +65,7 @@ function RecipesList() {
                         <td>
                             <img src={ImgCroquetas} title="Croquetas" alt="Croquetas" />
                         </td>
-                        <td>Bla bla bla bla bla bla bla.</td>
+                        <td>Es una elaboración hecha principalmente a base de leche, harina y mantequilla. Después le puedes añadir el sabor que desees. En este caso se han elegido de jamón..</td>
                     </tr>
                     <tr>
                         <td>3</td>
@@ -75,7 +77,67 @@ function RecipesList() {
                         <td>
                             <img src={ImgGazpacho} title="Gazpacho" alt="Gazpacho" />
                         </td>
-                        <td>Bla bla bla bla bla bla bla.</td>
+                        <td>Es una elaboración fría hecha a base de tomate, aceite, pepino, cebolla, vinagre y sal.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <NavLink to="/recipe/4">
+                                <span>Salmorejo</span>
+                            </NavLink>
+                        </td>
+                        <td>
+                            <img src={ImgSalmorejo} title="Salmorejo" alt="Salmorejo" />
+                        </td>
+                        <td>Es una elaboración fría hecha a base de tomate, aceite, sal y pan.</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <NavLink to="/recipe/5">
+                                <span>Salmón marinado</span>
+                            </NavLink>
+                        </td>
+                        <td>
+                            <img src={ImgSalmón} title="Salmón marinado" alt="Salmón marinado" />
+                        </td>
+                        <td>Es una elaboración fría hecha con salmón, citricos, sal y azúcar.</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <NavLink to="/recipe/6">
+                                <span>Gazpacho</span>
+                            </NavLink>
+                        </td>
+                        <td>
+                            <img src={ImgGazpacho} title="Gazpacho" alt="Gazpacho" />
+                        </td>
+                        <td>Es una elaboración fría hecha a base de tomate, aceite, pepino, cebolla, vinagre y sal.</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            <NavLink to="/recipe/7">
+                                <span>Gazpacho</span>
+                            </NavLink>
+                        </td>
+                        <td>
+                            <img src={ImgGazpacho} title="Gazpacho" alt="Gazpacho" />
+                        </td>
+                        <td>Es una elaboración fría hecha a base de tomate, aceite, pepino, cebolla, vinagre y sal.</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>
+                            <NavLink to="/recipe/8">
+                                <span>Gazpacho</span>
+                            </NavLink>
+                        </td>
+                        <td>
+                            <img src={ImgGazpacho} title="Gazpacho" alt="Gazpacho" />
+                        </td>
+                        <td>Es una elaboración fría hecha a base de tomate, aceite, pepino, cebolla, vinagre y sal.</td>
                     </tr>
                 </tbody>
             </Table>
