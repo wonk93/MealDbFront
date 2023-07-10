@@ -1,14 +1,13 @@
-import { Box, Center, Heading, Text } from 'react-bootstrap'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import './../css/HomePage.css';
+import React from 'react';
+import './../css/HomePage.css';
+import { Link } from 'react-router-dom';
 
 export default function ErrorPage() {
   return (
-    <Box>
-      <Heading textAlign={"center"}>¿Cómo has llegado hasta aquí?</Heading>
-      <Center mt="24px">
-        <Link to="/"><Text>Volver a casa</Text></Link>
-      </Center>
-    </Box>
+    <article class="error-page">
+      <h1>Parece que algo no ha ido bien...</h1>
+      <Link to="/">Volver a inicio</Link>
+    </article>
   )
 }

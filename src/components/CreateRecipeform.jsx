@@ -4,10 +4,14 @@
 // import axios from "axios";
 // import todoService from "../services/todo.service";
 
-// export default function CreateTodoForm({ getTodos, onClose }) {
-//   const [data, setData] = useState({});
-//   const [loading, setLoading] = useState(false);
-  
+// export default function EditTodoForm({ todo: { title, description, dueDate, priority, _id }, onClose, getTodo }) {
+//   const [data, setData] = useState({
+//     title,
+//     description,
+//     dueDate,
+//     priority
+//   })
+
 //   const handleChange = (e) => {
 //     setData({
 //       ...data,
@@ -17,22 +21,19 @@
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
-//     setLoading(true);
 //     try {
-//       // await axios.post(`${import.meta.env.VITE_API_URL}/todos`, data);
-//       await todoService.create(data);
-//       getTodos();
+//       // await axios.put(`${import.meta.env.VITE_API_URL}/todos/${_id}`, data);
+//       await todoService.edit(_id, data);
+//       getTodo();
 //       onClose();
-//       setLoading(false);
 //     } catch (error) {
 //       console.log(error);
-//       setLoading(false);
 //     }
 //   }
 
 //   return (
 //     <ModalContent as="form" onSubmit={handleSubmit}>
-//       <ModalHeader>Crear todo</ModalHeader>
+//       <ModalHeader>Editar todo</ModalHeader>
 //       <ModalCloseButton />
 //       <ModalBody>
 //         <FormControl>
@@ -61,7 +62,7 @@
 //         <Button colorScheme='blue' mr={3} onClick={onClose}>
 //           Cerrar
 //         </Button>
-//         <Button variant='ghost' type='submit' isLoading={loading}>Guardar</Button>
+//         <Button variant='ghost' type='submit'>Guardar</Button>
 //       </ModalFooter>
 //     </ModalContent>
 //   )
