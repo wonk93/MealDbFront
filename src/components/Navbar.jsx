@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import React, { useContext } from "react";
-// import { BiSolidUser } from "react-icons/bi";
+// import { BiSolidUser } from "react-icons/fa";
 import ImgLogo from './../img/logo.png';
 import ImgLogout from './../img/logout.png';
 import ImgProfile from './../img/profile.png';

@@ -15,10 +15,10 @@ class AuthService {
 
   verify(token) {
     return this.api.get(
-      `/auth/verify`
-      // {
-      //   headers: { Authorization: `Bearer ${token}` }
-      // }
+      `/auth/verify`,
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
     );
   }
 }

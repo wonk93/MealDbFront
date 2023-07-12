@@ -2,7 +2,7 @@ import ImgTortilla from './../img/tortilla.jpg';
 import ImgCroquetas from './../img/croquetas.jpg';
 import ImgGazpacho from './../img/gazpacho.jpg';
 import ImgSalmorejo from './../img/salmorejo.jpg';
-import ImgSalmón from './../img/salmón_marinado.jpg';
+import ImgSalmon from './../img/salmon_marinado.jpg';
 import Table from 'react-bootstrap/Table';
 import { NavLink } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
@@ -99,46 +99,10 @@ function RecipesList() {
                             </NavLink>
                         </td>
                         <td>
-                            <img src={ImgSalmón} title="Salmón marinado" alt="Salmón marinado" />
+                            <img src={ImgSalmon} title="Salmón marinado" alt="Salmón marinado" />
                         </td>
                         <td>Es una elaboración fría hecha con salmón, citricos, sal y azúcar.</td>
                     </tr>
-                    {/* <tr>
-                        <td>6</td>
-                        <td>
-                            <NavLink to="/recipe/6">
-                                <span>Gazpacho</span>
-                            </NavLink>
-                        </td>
-                        <td>
-                            <img src={ImgGazpacho} title="Gazpacho" alt="Gazpacho" />
-                        </td>
-                        <td>Es una elaboración fría hecha a base de tomate, aceite, pepino, cebolla, vinagre y sal.</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>
-                            <NavLink to="/recipe/7">
-                                <span>Gazpacho</span>
-                            </NavLink>
-                        </td>
-                        <td>
-                            <img src={ImgGazpacho} title="Gazpacho" alt="Gazpacho" />
-                        </td>
-                        <td>Es una elaboración fría hecha a base de tomate, aceite, pepino, cebolla, vinagre y sal.</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>
-                            <NavLink to="/recipe/8">
-                                <span>Gazpacho</span>
-                            </NavLink>
-                        </td>
-                        <td>
-                            <img src={ImgGazpacho} title="Gazpacho" alt="Gazpacho" />
-                        </td>
-                        <td>Es una elaboración fría hecha a base de tomate, aceite, pepino, cebolla, vinagre y sal.</td>
-                    </tr> */}
                 </tbody>
             </Table>
 

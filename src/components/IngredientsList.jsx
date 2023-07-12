@@ -3,8 +3,8 @@ import ImgAceite from './../img/aceite.jpg';
 import ImgFresas from './../img/fresas.jpeg';
 import ImgLubina from './../img/lubina.jpg';
 import ImgTomate from './../img/tomate.jpg';
-import ImgSalmon from './../img/salmón.jpg';
-import ImgAzúcar from './../img/Azucar.jpg';
+import ImgSalmon from './../img/salmon.jpg';
+import ImgAzucar from './../img/Azucar.jpg';
 import ImgSal from './../img/sal.jpg';
 import Table from 'react-bootstrap/Table';
 import { NavLink } from "react-router-dom";
@@ -130,7 +130,7 @@ function IngredientsList() {
                             </NavLink>
                         </td>
                         <td>
-                            <img src={ImgAzúcar} title="Azúcar" alt="Azúcar" />
+                            <img src={ImgAzucar} title="Azúcar" alt="Azúcar" />
                         </td>
                     </tr>
                 </tbody>

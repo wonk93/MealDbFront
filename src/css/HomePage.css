@@ -9,3 +9,13 @@ article {
 .home-article-buttons {
     height: 100%;
 }
+
+.profile-image {
+    max-height: 200px;
+    width: auto !important;
+    margin-bottom: 15px;
+}
+
+.profile-image-text-container {
+    padding: calc(var(--bs-gutter-x) * .5);
+}

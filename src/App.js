@@ -17,7 +17,7 @@ import ErrorPage from "./pages/ErrorPage";
 import PrivateRoute from "./components/PrivateRoute";
 
 import Container from 'react-bootstrap/Container';
-import NavBar from "./components/Navbar";
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
 function App() {
