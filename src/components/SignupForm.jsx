@@ -28,7 +28,7 @@ const SignupForm = () => {
     e.preventDefault()
 
     authService
-        .register(signupForm)
+        .signup(signupForm)
         .then(() => {
             navigate('/')
         })
