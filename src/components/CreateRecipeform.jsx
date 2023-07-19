@@ -3,8 +3,8 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
-import authService from "../services/auth.service";
-
+// import authService from "../services/auth.service";
+// import uploadService from '../../services/upload.service'
 
 const CreateRecipeForm = () => {
     const [recipeData, setRecipeData] = useState({
@@ -19,7 +19,7 @@ const CreateRecipeForm = () => {
 
     const { author, title, image, instructions, ingredients, comments } = recipeData
 
-    const [loadingImage, setLoadingImage] = useState(false)
+    // const [loadingImage, setLoadingImage] = useState(false)
 
     const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ const CreateRecipeForm = () => {
         
         storeToken(data.authToken);
         authenticate();
-        navigate("/profile");//redire cion al perfil
+        navigate("/profile");
       })
       .catch(err => console.log(err));
   };
