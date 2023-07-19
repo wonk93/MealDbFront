@@ -23,7 +23,7 @@ const CreateRecipeForm = () => {
 
     const navigate = useNavigate();
 
-  const { authenticate, storeToken, error } = useContext(AuthContext);
+  const { error } = useContext(AuthContext);
 
   const handleInputChange = e => {
     const { value, name } = e.target;
@@ -34,14 +34,10 @@ const CreateRecipeForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
  
-    const data = new FormData(e.target);
   
     recipeService
       .create(recipeData)
       .then(() => {
-        
-        storeToken(data.authToken);
-        authenticate();
         navigate("/profile");
       })
       .catch(err => console.log(err));
