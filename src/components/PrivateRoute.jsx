@@ -13,9 +13,9 @@ export default function PrivateRoute({
   }
 
   // ToDo: the next code is commented because of development reasons. Uncomment it to have authorization working again.
-  // if (!user) {
-  //   return <Navigate to={redirectTo} />;
-  // }
+  if (!user) {
+    return <Navigate to={redirectTo} />;
+  }
 
   return children; 
 }

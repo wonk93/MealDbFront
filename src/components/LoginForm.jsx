@@ -5,7 +5,7 @@ import authService from "../services/auth.service";
 import { Link } from "react-router-dom";
 
 const LoginForm = () => {
-    const [loginData, setLoginData] = useState({
+    const [loginform, setLoginform] = useState({
       email: "",
       password: ""
     });
@@ -16,14 +16,14 @@ const LoginForm = () => {
 
   const handleInputChange = e => {
     const { value, name } = e.target;
-    setLoginData({ ...loginData, [name]: value });
+    setLoginform({ ...loginform, [name]: value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
     authService
-      .login(loginData)
+      .login(loginform)
       .then(({ data }) => {
         console.log(data);
         storeToken(data.authToken);
@@ -33,7 +33,7 @@ const LoginForm = () => {
       .catch(err => console.log(err));
   };
 
-  const { password, email } = loginData;
+  const { password, email } = loginform;
 
   return (
     <form onSubmit={handleSubmit}>

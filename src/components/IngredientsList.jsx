@@ -12,7 +12,7 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function IngredientsList() {
     const navigate = useNavigate();
@@ -22,7 +22,28 @@ function IngredientsList() {
         setIngredientName({ name: event.target.value });
     };
 
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //       try {
+    //         const response = await fetch('www.themealdb.com/api/json/v1/1/ search');
+    //         const jsonData = await response.json();
+    //         setData(jsonData);
+    //         setLoading(false);
+    //       } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //       }
+    //     };
+    
+    //     fetchData();
+    //   }, []);
+
+
+
+
     const searchIngredient = () => {
+        
+
         // ToDo: buscar ingrediente por nombre en la API (ingredientName.name), y con el id navegar a la pagina
         navigate(`/ingredient/` + 1 );
     };

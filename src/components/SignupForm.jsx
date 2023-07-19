@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../services/auth.service";
 import { Link } from "react-router-dom";
+import { Axios } from "axios";
 
 const SignupForm = () => {
   const [signupData, setSignupData] = useState({
