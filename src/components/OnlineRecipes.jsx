@@ -9,7 +9,7 @@ function OnlineRecipes() {
   let [searchTerm, setRecipeName] = useState("");
 
   const handleInputChange = (event) => {
-    setRecipeName({ name: event.target.value });
+    setRecipeName( event.target.value );
   };
 
   // const searchRecipe = () => {
