@@ -3,23 +3,29 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function OnlineRecipes() {
   const navigate = useNavigate();
-  let [recipeName, setRecipeName] = useState("");
+  let [searchTerm, setRecipeName] = useState("");
+  const history = useHistory();
 
   const handleInputChange = (event) => {
     setRecipeName({ name: event.target.value });
   };
 
-  const searchRecipe = () => {
-    navigate(`/recipe/online/` + recipeName.name);
-  };
+  // const searchRecipe = () => {
+  //   navigate(`/recipe/online/` + recipeName.name);
+  // };
 
-  // www.themealdb.com/api/json/v1/1/search.php?s=    api mealdb
+ 
 
   const navigateToRandomOnlineRecipe = () => {
     navigate(`/recipe/online/random`);
+  };
+
+  const searchRecipe = () => {
+    history.push(`/recipes?search=${searchTerm}`);
   };
 
   return (

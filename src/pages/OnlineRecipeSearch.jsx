@@ -30,8 +30,6 @@ function OnlineRecipeSearch() {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    // Realiza la búsqueda de recetas utilizando la API
-    // Puedes reemplazar 'YOUR_API_KEY' con la clave de tu API si es necesaria
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
       .then((response) => response.json())
       .then((data) => setSearchResults(data.meals))
