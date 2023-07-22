@@ -25,7 +25,7 @@ function OnlineRecipes() {
   };
 
   const searchRecipe = () => {
-    history.push(`/recipes?search=${searchTerm}`);
+    history.push(`/recipe/online/:name=${searchTerm}`);
   };
 
   return (

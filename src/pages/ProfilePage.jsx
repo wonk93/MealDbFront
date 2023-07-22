@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 
 function ProfilePage() {
-  // const sampleDataFromApiRequest = { userName: "test", email: "test@test.com", nickName: "dani", profilePicture: "https://images.ecestaticos.com/JjMiY54z4BKuT8mzuqiONTlNBt4=/0x109:2119x1301/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb02%2F4cc%2F30d%2Fb024cc30d62f4897628336118f716af1.jpg" };
+  const sampleDataFromApiRequest = { userName: "test", email: "test@test.com", nickName: "dani", profilePicture: "https://images.ecestaticos.com/JjMiY54z4BKuT8mzuqiONTlNBt4=/0x109:2119x1301/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb02%2F4cc%2F30d%2Fb024cc30d62f4897628336118f716af1.jpg" };
   const [user, setUser] = useState();
   const [tempUser, setTempUser] = useState();
   const [loading, setLoading] = useState(true);
