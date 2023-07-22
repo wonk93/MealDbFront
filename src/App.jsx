@@ -33,7 +33,7 @@ function App() {
             <Route path="/recipe/:id" element={<PrivateRoute><RecipePage /></PrivateRoute>} />
             <Route path="/recipe/add" element={<PrivateRoute><AddRecipePage /></PrivateRoute>} />
             <Route path="/recipe/online/random" element={<PrivateRoute><RandomOnlineRecipe /></PrivateRoute>} />
-            <Route path="/recipe/online/:name" element={<PrivateRoute><OnlineRecipeSearch /></PrivateRoute>} />
+            <Route path="/recipe/online" element={<PrivateRoute><OnlineRecipeSearch /></PrivateRoute>} />
             <Route path="/ingredient/:id" element={<PrivateRoute><IngredientPage /></PrivateRoute>} />
             <Route path="/ingredient/add" element={<PrivateRoute><AddIngredientPage /></PrivateRoute>} />
             <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
