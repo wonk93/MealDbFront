@@ -44,7 +44,7 @@ function OnlineRecipes() {
                 </Button>
                 <div id="results"></div>
 
-                {/* <script src="../service/mealdbservice.js"></script> */}
+                <script src="../../service/mealdbservice.js"></script>
                 <Button
                   variant="success"
                   onClick={navigateToRandomOnlineRecipe}
