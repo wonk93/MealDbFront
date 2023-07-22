@@ -6,6 +6,7 @@ function OnlineRecipeSearch() {
     return (
         <article>
             <h1>Receta online de {name}</h1>
+            
         </article>
     )
 }
