@@ -20,25 +20,25 @@ function ProfilePage() {
 
   useEffect(() => {
     // ToDo: uncomment to fetch data from API. Check url and check if everything goes ok
-    // const url = '/profile';
-    // axios.get(url, {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization: 'Bearer ' + localStorage.getItem('token'),
-    //   },
-    // })
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error('Ha habido un error, intentalo más tarde.');
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     setUser(data);
-    //     setTempUser(data);
-    //     // ToDo: si lo siguiente da problemas en la web del tipo: userName undefined, utilizar "setTimeout(delayFunction, 3000);" en su lugar
-    //     setLoading(false);
-    //   });
+    const url = '/profile';
+    axios.get(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Ha habido un error, intentalo más tarde.');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setUser(data);
+        setTempUser(data);
+        // ToDo: si lo siguiente da problemas en la web del tipo: userName undefined, utilizar "setTimeout(delayFunction, 3000);" en su lugar
+        setLoading(false);
+      });
 
     setUser(sampleDataFromApiRequest);
     setTempUser(sampleDataFromApiRequest);
