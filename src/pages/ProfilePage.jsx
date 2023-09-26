@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 
 function ProfilePage() {
-  const sampleDataFromApiRequest = { userName: "test", email: "test@test.com", nickName: "dani", profilePicture: "https://images.ecestaticos.com/JjMiY54z4BKuT8mzuqiONTlNBt4=/0x109:2119x1301/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb02%2F4cc%2F30d%2Fb024cc30d62f4897628336118f716af1.jpg" };
+  const sampleDataFromApiRequest = { userName: "test", email: "test@test.com",  profilePicture: "https://images.ecestaticos.com/JjMiY54z4BKuT8mzuqiONTlNBt4=/0x109:2119x1301/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb02%2F4cc%2F30d%2Fb024cc30d62f4897628336118f716af1.jpg" };
   const [user, setUser] = useState();
   const [tempUser, setTempUser] = useState();
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ function ProfilePage() {
     axios.get(url, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
+        Authorization: 'Bearer ' + localStorage.getItem('authToken'),
       },
     })
       .then((response) => {
@@ -36,7 +36,6 @@ function ProfilePage() {
       .then((data) => {
         setUser(data);
         setTempUser(data);
-        // ToDo: si lo siguiente da problemas en la web del tipo: userName undefined, utilizar "setTimeout(delayFunction, 3000);" en su lugar
         setLoading(false);
       });
 
@@ -52,7 +51,7 @@ function ProfilePage() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
+        Authorization: 'Bearer ' + localStorage.getItem('authToken'),
       },
       body: JSON.stringify(tempUser),
     })
@@ -96,7 +95,7 @@ function ProfilePage() {
             </Col>
           </Form.Group>
 
-          <Form.Group as={Row} className="mb-3" controlId="formHorizontalNickName">
+          {/* <Form.Group as={Row} className="mb-3" controlId="formHorizontalNickName">
             <Form.Label column sm={2}>
               Nick
             </Form.Label>
@@ -110,7 +109,7 @@ function ProfilePage() {
                   });
                 }} />
             </Col>
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group as={Row} className="mb-3" controlId="formHorizontalProfilePicture">
             <Form.Label column sm={2}>

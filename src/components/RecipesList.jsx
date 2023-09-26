@@ -30,6 +30,10 @@ function RecipesList() {
 
     // ToDo: conectar con API back y obtener recetas en una variable. Despues, hacer un recetas.map y pintar la tabla segun el ejemplo
 
+
+
+    //Refactorizar el código de la página, mirar lo que viene del backEnd del módelo de receta 
+
     return (
         <article>
             <h2>Recetas</h2>

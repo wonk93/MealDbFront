@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../services/auth.service";
 import { Link } from "react-router-dom";
-import { Form, InputGroup } from 'react-bootstrap'
+// import { Form, InputGroup } from 'react-bootstrap'
 // import uploadService from '../../services/upload.service'
 
 const SignupForm = () => {

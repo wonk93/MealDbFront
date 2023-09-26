@@ -23,15 +23,16 @@ const LoginForm = () => {
     e.preventDefault();
 
     authService
-      .login(loginform)
-      .then(({ data }) => {
-        console.log(data);
-        storeToken(data.authToken);
-        authenticate();
-        navigate("/");
-      })
-      .catch(err => console.log(err));
-  };
+    .login(loginform)
+    .then(({ data }) => {
+      console.log(data);
+      localStorage.setItem('user', JSON.stringify(data.user))
+      storeToken(data.authToken);
+      authenticate();
+      navigate("/");
+    })
+    .catch(err => console.log(err));
+};
 
   const { password, email } = loginform;
 
@@ -71,3 +72,6 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+
+

@@ -10,14 +10,13 @@ const CreateRecipeForm = () => {
     const [recipeData, setRecipeData] = useState({
       author: "",
       title: "",
-      image: "",
       instructions: "",
       ingredients: "",
       comments: ""
 
     })
 
-    const { author, title, image, instructions, ingredients, comments } = recipeData
+    const { author, title, instructions, ingredients, comments } = recipeData
 
     // const [loadingImage, setLoadingImage] = useState(false)
 
@@ -50,7 +49,7 @@ const CreateRecipeForm = () => {
       
         <label>Author</label>
         <input
-          type="author"
+          type="text"
           value={author}
           onChange={handleInputChange}
           name="author">
@@ -60,7 +59,7 @@ const CreateRecipeForm = () => {
       <div>
         <label>Title</label>
         <input
-          type="title"
+          type="text"
           value={title}
           onChange={handleInputChange}
           name="title">
@@ -80,7 +79,7 @@ const CreateRecipeForm = () => {
       <div>
         <label>Instructions</label>
         <input
-          type="instructions"
+          type="text"
           value={instructions}
           onChange={handleInputChange}
           name="instructions">
@@ -90,7 +89,7 @@ const CreateRecipeForm = () => {
       <div>
         <label>Ingredients</label>
         <input
-          type="ingredients"
+          type="text"
           value={ingredients}
           onChange={handleInputChange}
           name="ingredients">
@@ -100,7 +99,7 @@ const CreateRecipeForm = () => {
       <div>
         <label>Comments</label>
         <input
-          type="comments"
+          type="text"
           value={comments}
           onChange={handleInputChange}
           name="comments">

@@ -1,0 +1,16 @@
+.header {
+    background-color: aqua;
+}
+
+.Title {
+    border-radius: 20px;
+    height: max-content;
+    letter-spacing: normal;
+    font-size: 50px;
+}
+
+.Instruction {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: larger;
+}
