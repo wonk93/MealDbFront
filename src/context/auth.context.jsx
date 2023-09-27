@@ -38,7 +38,7 @@ export const AuthContextWrapper = ({ children }) => {
       .verify(token)
       .then(user => {
         setLoading(false);
-        setUser(user);
+        setUser(user.data);
       })
       .catch(err => {
         logout();

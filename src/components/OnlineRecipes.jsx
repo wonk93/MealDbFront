@@ -12,14 +12,12 @@ function OnlineRecipes() {
     setRecipeName( event.target.value );
   };
 
-  // const searchRecipe = () => {
-  //   navigate(`/recipe/online/` + recipeName.name);
-  // };
-
- 
-
   const navigateToRandomOnlineRecipe = () => {
     navigate(`/recipe/online/random`);
+  };
+
+  const navigateToAllCategories = () => {
+    navigate(`/recipe/online/categories`);
   };
 
   const searchRecipe = () => {
@@ -52,6 +50,12 @@ function OnlineRecipes() {
                   onClick={navigateToRandomOnlineRecipe}
                 >
                   Receta aleatoria
+                </Button>
+                <Button
+                  variant="success"
+                  onClick={navigateToAllCategories}
+                >
+                  Todas las categorias
                 </Button>
               </ButtonGroup>
             </div>

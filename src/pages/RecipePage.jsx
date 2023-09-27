@@ -1,14 +1,37 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function RecipePage() {
-    const { id } = useParams();
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState(null);
 
-    return (
-        <article>
-            <h1>Receta {id}</h1>
-            <p>bla bla bla.</p>
-        </article>
-    )
+  useEffect(() => {
+    // Realiza la solicitud HTTP para obtener la receta por ID
+    axios.get(`api/recipes/${id}`)
+      .then((response) => {
+        setRecipe(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [id]);
+
+  return (
+    <article>
+      {recipe ? (
+        <div>
+          <h1>{recipe.author}</h1>
+          <p>{recipe.title}</p>
+          <p>{recipe.instructions}</p>
+          <p>{recipe.ingredients}</p>
+          <p>{recipe.comments}</p>
+        </div>
+      ) : (
+        <p>Cargando receta...</p>
+      )}
+    </article>
+  );
 }
 
 export default RecipePage;

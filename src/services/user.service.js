@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class UserService {
     constructor() {
-        this.axios = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/user` })
+        this.axios = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/profile` })
 
         this.axios.interceptors.request.use((config) => {
 
@@ -18,6 +18,10 @@ class UserService {
 
     getOneUserById(id) {
         return this.axios.get(`/getUserById/${id}`)
+    }
+
+    getCurrentUser() {
+        return this.axios.get(`/`)
     }
 
     getOneUser(username) {

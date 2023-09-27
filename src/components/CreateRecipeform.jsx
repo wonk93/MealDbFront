@@ -10,10 +10,10 @@ const CreateRecipeForm = () => {
     const [recipeData, setRecipeData] = useState({
       author: "",
       title: "",
+      image: "",
       instructions: "",
       ingredients: "",
-      comments: ""
-
+      comments: [],
     })
 
     const { author, title, instructions, ingredients, comments } = recipeData

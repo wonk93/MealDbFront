@@ -1,71 +1,89 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './../css/HomePage.css';
-import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
+import userService from "../services/user.service";
+import { AuthContext } from "../context/auth.context";
 
 function ProfilePage() {
-  const sampleDataFromApiRequest = { userName: "test", email: "test@test.com",  profilePicture: "https://images.ecestaticos.com/JjMiY54z4BKuT8mzuqiONTlNBt4=/0x109:2119x1301/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb02%2F4cc%2F30d%2Fb024cc30d62f4897628336118f716af1.jpg" };
-  const [user, setUser] = useState();
-  const [tempUser, setTempUser] = useState();
+    const [foundUser, setFoundUser] = useState(null);
+  const [tempUser, setTempUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [changed, setChanged] = useState(false);
+  const {user} = useContext(AuthContext);
 
   function delayFunction() {
     setLoading(false);
   };
-
   useEffect(() => {
     // ToDo: uncomment to fetch data from API. Check url and check if everything goes ok
-    const url = '/profile';
-    axios.get(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('authToken'),
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Ha habido un error, intentalo más tarde.');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setUser(data);
+    //Dentro del useffect llamar a la apu user.service
+    userService.getCurrentUser()
+      .then(({data}) => {
+        console.log(data);
+        setFoundUser(data);
         setTempUser(data);
         setLoading(false);
       });
-
-    setUser(sampleDataFromApiRequest);
-    setTempUser(sampleDataFromApiRequest);
     setTimeout(delayFunction, 3000);
   }, []);
 
-  function updateProfile(e) {
-    e.preventDefault();
-    const url = '/profile';
-    axios(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.getItem('authToken'),
-      },
-      body: JSON.stringify(tempUser),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Ha habido un error, intentalo más tarde.');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setUser(data.profile);
-        setChanged(false);
-      });
-  }
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get('/profile', {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           Authorization: 'Bearer ' + localStorage.getItem('authToken'),
+  //         },
+  //       });
+
+  //       if (response.status === 200) {
+  //         setFoundUser(response.data); 
+  //         setTempUser(response.data);
+  //         setLoading(false);
+  //       } else {
+  //         throw new Error('Ha habido un error al obtener los datos del perfil.');
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+
+
+  //cambiar 
+
+  // function updateProfile(e) {
+  //   e.preventDefault();
+  //   const url = '/profile';
+  //   axios(url, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization: 'Bearer ' + localStorage.getItem('authToken'),
+  //     },
+  //     body: JSON.stringify(tempUser),
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error('Ha habido un error, intentalo más tarde.');
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setFoundUser(data.profile);
+  //       setChanged(false);
+  //     });
+  // }
 
   return (
     loading ? (
@@ -74,9 +92,9 @@ function ProfilePage() {
       </article>
     ) :
       <article>
-        <h1>Bienvenido, {user.userName}!</h1>
+        <h1>Bienvenido, {foundUser.userName}!</h1>
 
-        <Form onSubmit={updateProfile}>
+        <Form>
           <Form.Group as={Row} className="mb-3" controlId="formHorizontalUserName">
             <Form.Label column sm={2}>
               Nombre usuario
@@ -138,7 +156,7 @@ function ProfilePage() {
               <Row>
                 <Col sm={{ span: 2, offset: 2 }}>
                   <Button variant="warning" onClick={(e) => {
-                    setTempUser({ ...user });
+                    setTempUser({ ...foundUser });
                     setChanged(false);
                   }}>
                     Deshacer cambios
@@ -152,7 +170,7 @@ function ProfilePage() {
               <Row>
                 <Col sm={{ span: 2, offset: 2 }}>
                   <Button variant="warning" disabled onClick={(e) => {
-                    setTempUser({ ...user });
+                    setTempUser({ ...foundUser });
                     setChanged(false);
                   }}>
                     Deshacer cambios
