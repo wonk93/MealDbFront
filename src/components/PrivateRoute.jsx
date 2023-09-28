@@ -12,6 +12,7 @@ export default function PrivateRoute({
     return <p>Loading...</p>;
   }
 
+  // ToDo: the next code is commented because of development reasons. Uncomment it to have authorization working again.
   if (!user) {
     return <Navigate to={redirectTo} />;
   }

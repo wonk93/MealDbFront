@@ -1,31 +1,48 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../services/auth.service";
+import { Link } from "react-router-dom";
+// import { Form, InputGroup } from 'react-bootstrap'
+// import uploadService from '../../services/upload.service'
 
 const SignupForm = () => {
-  const [signupData, setSignupData] = useState({
-    username: "",
+
+  const [signupForm, setSignupForm] = useState({
+    userName: "",
     email: "",
     password: ""
   });
+
+  const { userName, password, email } = signupForm;
 
   const navigate = useNavigate();
 
   const handleInputChange = e => {
     const { value, name } = e.target;
-    setSignupData({ ...signupData, [name]: value });
+    setSignupForm({ ...signupForm, [name]: value });
   };
+
+
 
   const handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault()
 
     authService
-      .signup(signupData)
-      .then(({ data }) => navigate("/login"))
-      .catch(err => console.log(err));
-  };
+        .signup(signupForm)
+        .then(() => {
+            navigate('/')
+        })
+        .catch(err => console.log(err))
+}
 
-  const { username, password, email } = signupData;
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+
+  //   authService
+  //     .signup(setSignupForm)
+  //     .then(({ data }) => navigate("/login"))
+  //     .catch(err => console.log(err));
+  // };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -33,9 +50,9 @@ const SignupForm = () => {
         <div>Username</div>
         <input
           type="text"
-          value={username}
+          value={userName}
           onChange={handleInputChange}
-          name="username">
+          name="userName">
           </input>
       </div>
 
@@ -63,7 +80,9 @@ const SignupForm = () => {
         <button colorScheme="teal" variant="solid" type="submit">
           Create user
         </button>
-        <link to="/login">Login</link>
+        <Link to={"/login"}>
+        <button>Login</button>
+      </Link>
       </div>
     </form>
   );
