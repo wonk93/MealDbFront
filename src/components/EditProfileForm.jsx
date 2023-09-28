@@ -1,33 +1,34 @@
-// import { useState, useContext, useEffect } from "react"
-// import { Form, InputGroup } from 'react-bootstrap'
-// import { useNavigate, useParams, } from 'react-router-dom'
-// import userService from "../../services/user.service"
-// import { AuthContext } from "../../context/auth.context"
-// import uploadService from "../../services/upload.service"
+import { useState, useContext, useEffect } from "react"
+import { Form, InputGroup } from 'react-bootstrap'
+import { useNavigate, useParams, } from 'react-router-dom'
+import userService from "../../services/user.service"
+import { AuthContext } from "../../context/auth.context"
+import uploadService from "../../services/upload.service"
 
-// const ProfilePageEdit = () => {
+const ProfilePageEdit = () => {
 
-//     const { userName } = useParams()
+    const { userName } = useParams()
 
-//     const [ProfilePageEdit, setProfilePageEdit] = useState({})
-//     const [loadingImage, setLoadingImage] = useState(false)
-//     const { user, setUser } = useContext(AuthContext)
-//     const navigate = useNavigate()
+    const [ProfilePageEdit, setProfilePageEdit] = useState({})
+    const [loadingImage, setLoadingImage] = useState(false)
+    const { user, setUser } = useContext(AuthContext)
+    const navigate = useNavigate()
 
-//     useEffect(() => {
-//         userService
-//             .getOneUser(userName)
-//             .then(({ data }) => setProfilePageEdit(data))
-//             .catch(err => console.log(err))
-//     }, [userName])
+    useEffect(() => {
+        userService
+            .getOneUser(userName)
+            .then(({ data }) => setProfilePageEdit(data))
+            //console.log(data);
+            .catch(err => console.log(err))
+    }, [userName])
 
-//     const handleInputChange = e => {
-//         const { name, value } = e.target
-//         setProfilePageEdit({
-//             ...ProfilePageEdit,
-//             [name]: value
-//         })
-//     }
+    const handleInputChange = e => {
+        const { name, value } = e.target
+        setProfilePageEdit({
+            ...ProfilePageEdit,
+            [name]: value
+        })
+    }
 
 //     const uploadPostImage = e => {
 //         setLoadingImage(true)
@@ -118,6 +119,6 @@
 //             <button className="loginButton" type="submit" disabled={loadingImage}>{loadingImage ? 'Espere...' : 'Editar'}</button>
 //         </Form>
 //     )
-// }
+}
 
-// export default ProfilePageEdit
+export default ProfilePageEdit

@@ -1,12 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import './../css/HomePage.css';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 import userService from "../services/user.service";
 import { AuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
+import recipeService from "../services/recipe.service";
+
+// const [userRecipes, setUserRecipes] = useState([]);
+
 
 function ProfilePage() {
     const [foundUser, setFoundUser] = useState(null);
@@ -14,76 +20,34 @@ function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [changed, setChanged] = useState(false);
   const {user} = useContext(AuthContext);
+  const [userRecipes, setUserRecipes] = useState([]);
+  const navigate = useNavigate();
+
+  const navigateToNewRecipe = () => {
+    navigate(`/recipe/add`);
+};
+
+  
 
   function delayFunction() {
     setLoading(false);
   };
   useEffect(() => {
-    // ToDo: uncomment to fetch data from API. Check url and check if everything goes ok
-    //Dentro del useffect llamar a la apu user.service
     userService.getCurrentUser()
       .then(({data}) => {
-        console.log(data);
         setFoundUser(data);
         setTempUser(data);
         setLoading(false);
       });
-    setTimeout(delayFunction, 3000);
+    //   recipeService.getUserRecipes(user.id)  // Asumo que hay una propiedad `id` en el objeto `user`
+    // .then(response => {
+    //   setUserRecipes(response.data);
+    // })
+    // .catch(error => {
+    //   console.error(error);
+    // });
+    // setTimeout(delayFunction, 3000);
   }, []);
-
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get('/profile', {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           Authorization: 'Bearer ' + localStorage.getItem('authToken'),
-  //         },
-  //       });
-
-  //       if (response.status === 200) {
-  //         setFoundUser(response.data); 
-  //         setTempUser(response.data);
-  //         setLoading(false);
-  //       } else {
-  //         throw new Error('Ha habido un error al obtener los datos del perfil.');
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-
-
-  //cambiar 
-
-  // function updateProfile(e) {
-  //   e.preventDefault();
-  //   const url = '/profile';
-  //   axios(url, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: 'Bearer ' + localStorage.getItem('authToken'),
-  //     },
-  //     body: JSON.stringify(tempUser),
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error('Ha habido un error, intentalo más tarde.');
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setFoundUser(data.profile);
-  //       setChanged(false);
-  //     });
-  // }
 
   return (
     loading ? (
@@ -165,6 +129,9 @@ function ProfilePage() {
                 <Col sm={{ span: 2 }}>
                   <Button type="submit">Modificar datos</Button>
                 </Col>
+                <Col sm={{ span: 2 }}>
+                <Button variant="success" onClick={navigateToNewRecipe}>Crear receta</Button>
+                </Col>
               </Row>
             ) :
               <Row>
@@ -179,11 +146,30 @@ function ProfilePage() {
                 <Col sm={{ span: 2 }}>
                   <Button type="submit" disabled>Modificar datos</Button>
                 </Col>
+                <Col sm={{ span: 2 }}>
+                <Button variant="success" onClick={navigateToNewRecipe}>Crear receta</Button>
+                </Col>                 
               </Row>
             }
           </Form.Group>
         </Form>
+        <h1>Bienvenido, {foundUser.userName}!</h1>
+  {/* ... Tu código actual ... */}
+
+  <h2>Tus recetas:</h2>
+  {userRecipes.length > 0 ? (
+    <ul>
+      {userRecipes.map(recipe => (
+        <li key={recipe.id}>
+          <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>No has creado recetas todavía.</p>
+  )}
       </article>
+      
   );
 }
 

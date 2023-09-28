@@ -7,7 +7,6 @@ function RecipePage() {
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    // Realiza la solicitud HTTP para obtener la receta por ID
     axios.get(`api/recipes/${id}`)
       .then((response) => {
         setRecipe(response.data);
