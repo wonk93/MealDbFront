@@ -28,8 +28,9 @@ class UserService {
         return this.axios.get(`/getUser/${username}`)
     }
 
-    editProfileUser(id, info) {
-        return this.axios.put(`/${id}/edit-profile`, info)
+    editProfileUser(info) {
+        console.log(info);
+        return this.axios.put(`/edit-profile`, info)
     }
 
     getAllUsers() {

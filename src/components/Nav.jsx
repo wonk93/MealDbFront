@@ -15,7 +15,7 @@ export const TOKEN_NAME = "authToken";
 function NavBar() {
   const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
+console.log(user)
   const logout = (event) => {
     if (user) {
       setUser(null);
@@ -36,7 +36,7 @@ function NavBar() {
           </Col>
           <Col sm="auto" className="navbar-right">
             <NavLink to="/profile">
-              <img src={ImgProfile} title="Perfil usuario" alt="Perfil usuario" />
+              <img src={user?.imageURL} title="Perfil usuario" alt="Perfil usuario" />
               <span> Perfil usuario</span>
             </NavLink>
           </Col>

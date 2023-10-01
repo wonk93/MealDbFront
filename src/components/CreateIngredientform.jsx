@@ -1,18 +1,17 @@
-import recipeService from "../services/recipe.service";
+import ingredientService from "../services/ingredient.service";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
-// import authService from "../services/auth.service";
-// import uploadService from '../../services/upload.service'
+
 
 const CreateIngredientsForm = () => {
-  const [recipeData, setRecipeData] = useState({
-    image: "",
+  const [ingredientsData, setingredientsData] = useState({
+    imageURL: "",
     ingredients: "",
   });
 
-  const { image, ingredients } = recipeData;
+  const { imageURL, ingredients } = ingredientsData;
 
   // const [loadingImage, setLoadingImage] = useState(false)
 
@@ -23,16 +22,16 @@ const CreateIngredientsForm = () => {
   const handleInputChange = (e) => {
     const { value, name } = e.target;
 
-    setRecipeData({ ...recipeData, [name]: value });
+    setingredientsData({ ...ingredientsData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    recipeService
-      .create(recipeData)
+    ingredientService
+      .create(ingredientsData)
       .then(() => {
-        navigate("/profile");
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };

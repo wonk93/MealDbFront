@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import authService from "../services/auth.service";
+import userService from "../services/user.service";
 
 export const TOKEN_NAME = "authToken";
 
@@ -14,7 +15,7 @@ export const AuthContextWrapper = ({ children }) => {
     authenticate();
   }, []);
 
-  const storeToken = token => {
+  const storeToken = (token) => {
     localStorage.setItem(TOKEN_NAME, token);
   };
 
@@ -36,11 +37,13 @@ export const AuthContextWrapper = ({ children }) => {
     setLoading(true);
     return authService
       .verify(token)
-      .then(user => {
+      .then((user) => {
         setLoading(false);
-        setUser(user.data);
+        userService
+          .getCurrentUser()
+          .then(({ data }) => setUser(data));
       })
-      .catch(err => {
+      .catch((err) => {
         logout();
         setError("You are not authenticated!");
       });
@@ -56,7 +59,7 @@ export const AuthContextWrapper = ({ children }) => {
         setUser,
         logout,
         removeToken,
-        error
+        error,
       }}
     >
       {children}

@@ -1,69 +1,178 @@
-// import { Button, FormControl, FormLabel, Input, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, Select, Textarea } from "@chakra-ui/react";
-// import { useState } from "react";
-// import { formatDateForInput } from "../utils/functions";
-// import axios from "axios";
-// import todoService from "../services/todo.service";
+// import {
+//   Button,
+//   Form,
+//   FormControl,
+// } from "react-bootstrap";
+// import { useEffect, useState } from "react";
+// import recipeService from "../services/recipe.service";
+// import { useParams } from "react-router-dom";
 
-// export default function EditTodoForm({ todo: { title, description, dueDate, priority, _id }, onClose, getTodo }) {
-//   const [data, setData] = useState({
-//     title,
-//     description,
-//     dueDate,
-//     priority
-//   })
+// export default function EditRecipeForm() {
+//   const [data, setData] = useState({});
+//   const { recipeId } = useParams();
+//   useEffect(() => {
+//     recipeService.getOneById(recipeId).then(({ data }) => setData(data));
+//   }, [recipeId]);
 
 //   const handleChange = (e) => {
 //     setData({
 //       ...data,
-//       [e.target.name]: e.target.value
-//     })
-//   }
+//       [e.target.name]: e.target.value,
+//     });
+//   };
 
+  
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
-//       // await axios.put(`${import.meta.env.VITE_API_URL}/todos/${_id}`, data);
-//       await todoService.edit(_id, data);
-//       getTodo();
-//       onClose();
+//       await recipeService.editRecipe(recipeId, data);
+      
 //     } catch (error) {
 //       console.log(error);
 //     }
-//   }
+//   };
 
 //   return (
-//     <ModalContent as="form" onSubmit={handleSubmit}>
-//       <ModalHeader>Editar todo</ModalHeader>
-//       <ModalCloseButton />
-//       <ModalBody>
+//     <Form onSubmit={handleSubmit}>
+//       <h2>Editar todo</h2>
 //         <FormControl>
-//           <FormLabel>Título</FormLabel>
-//           <Input type='text' name={"title"} value={data.title} onChange={handleChange} />
+//           <Form.Label>Author</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="author"
+//             value={data.author}
+//             onChange={handleChange}
+//           />
 //         </FormControl>
-//         <FormControl mt="12px">
-//           <FormLabel>Descripción</FormLabel>
-//           <Textarea multiple type='text' name={"description"} value={data.description} onChange={handleChange} />
+//         <FormControl>
+//           <Form.Label>Título</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="title"
+//             value={data.title}
+//             onChange={handleChange}
+//           />
 //         </FormControl>
-//         <FormControl mt="12px">
-//           <FormLabel>Fecha de entrega</FormLabel>
-//           <Input type='date' name={"dueDate"} value={formatDateForInput(new Date(data.dueDate))} onChange={handleChange} />
+//         <FormControl>
+//           <Form.Label>Image</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="image"
+//             value={data.imageURL}
+//             onChange={handleChange}
+//           />
 //         </FormControl>
-//         <FormControl mt="12px">
-//           <FormLabel>Prioridad</FormLabel>
-//           <Select name="priority" value={data.priority} placeholder='Selecciona la prioridad..' onChange={handleChange}>
-//             <option value='LOW'>Baja</option>
-//             <option value='MEDIUM'>Media</option>
-//             <option value='HIGH'>Alta</option>
-//           </Select>
+//         <FormControl>
+//           <Form.Label>Instructions</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="instructions"
+//             value={data.instructions}
+//             onChange={handleChange}
+//           />
 //         </FormControl>
-//       </ModalBody>
+//         <FormControl>
+//           <Form.Label>Ingredients</Form.Label>
+//           <Form.Control
+//             type="text"
+//             name="ingredients"
+//             value={data.ingredients}
+//             onChange={handleChange}
+//           />
+//         </FormControl>
+     
 
-//       <ModalFooter>
-//         <Button colorScheme='blue' mr={3} onClick={onClose}>
-//           Cerrar
+      
+//         <Button variant="primary" type="submit">
+//           Guardar
 //         </Button>
-//         <Button variant='ghost' type='submit'>Guardar</Button>
-//       </ModalFooter>
-//     </ModalContent>
-//   )
+    
+//     </Form>
+//   );
 // }
+
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import recipeService from "../services/recipe.service";
+import { useNavigate } from "react-router-dom";
+
+function EditRecipeForm() {
+  const [data, setData] = useState({});
+  const { recipeId } = useParams();
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    recipeService.getOneById(recipeId).then(({ data }) => setData(data));
+  }, [recipeId]);
+
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+          recipeService.editRecipe(recipeId, data);      
+      navigate(-1);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Editar todo</h2>
+      <label>
+        Author
+        <input
+          type="text"
+          name="author"
+          value={data.author || ""}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Título
+        <input
+          type="text"
+          name="title"
+          value={data.title || ""}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Image
+        <input
+          type="text"
+          name="image"
+          value={data.imageURL || ""}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Instructions
+        <input
+          type="text"
+          name="instructions"
+          value={data.instructions || ""}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Ingredients
+        <input
+          type="text"
+          name="ingredients"
+          value={data.ingredients || ""}
+          onChange={handleChange}
+        />
+      </label>
+      <button type="submit">Guardar</button>
+    </form>
+  );
+}
+
+export default EditRecipeForm;

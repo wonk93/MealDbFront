@@ -1,5 +1,4 @@
-// import axios from "axios";
-// import { TOKEN_NAME } from "../context/auth.context";
+
 import apiInstace from "./apiInstance";
 
 class RecipeService {
@@ -11,28 +10,30 @@ class RecipeService {
     return this.api.post("/recipe", data);
   }
 
-//   edit(id, data) {
-//     return this.api.put(`/recipe/${id}`, data);
-//   }
+  getAll() {
+    return this.api.get(`/recipe`);
+  }
+  getAllByAuthor(author) {
+    return this.api.get(`/recipe/${author}`);
+  }
 
-//   delete(id) {
-//     return this.api.delete(`/recipe/${id}`);
-//   }
+  getOneById(id) {
+    return this.api.get(`/recipe/getOneBy/${id}`);
+  }
 
-//   getAll() {
-//     return this.api.get(`/recipe`);
-//   }
+  getOneByQuery(recipeQuery) {
+    return this.api.post(`/recipe/byName`, recipeQuery);
+  }
 
-//   getOne(id) {
-//     return this.api.get(`/recipe/${id}`);
-//   }
+  deleteRecipe(id) {
+    return this.api.delete(`/recipe/deleteRecipe/${id}`);
+  }
+  editRecipe(id, data) {
+    return this.api.put(`/recipe/editRecipe/${id}`, data);
+  }
 }
 
 const recipeService = new RecipeService();
 
 export default recipeService;
 
-
-
-// Este es el modelo de una api interna. Hay que importarlo todo con una api
-// externa que en este caso sería mealDB
