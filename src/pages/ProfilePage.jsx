@@ -55,7 +55,6 @@ function ProfilePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     userService.editProfileUser(tempUser).then(({ data }) => {
-      console.log(data);
       setTempUser({ ...tempUser, data });
     });
   };

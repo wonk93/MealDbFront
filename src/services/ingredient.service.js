@@ -11,6 +11,10 @@ class IngredientService {
   getAll() {
     return this.api.get(`/ingredients`);
   }
+
+  getOneById(id) {
+    return this.api.get(`/ingredients/getOneBy/${id}`);
+  }
 }
 
 const ingredientService = new IngredientService();

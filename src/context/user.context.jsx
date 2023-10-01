@@ -1,26 +1,25 @@
-import { createContext, useEffect, useState } from "react"
-import userService from "../../services/user.service"
+import { createContext, useEffect, useState } from "react";
+import userService from "../../services/user.service";
 
-const ReloadContext = createContext()
+const ReloadContext = createContext();
 
 const LoadPageWrapper = (props) => {
+  const [loadUser, setLoadUser] = useState({});
 
-    const [loadUser, setLoadUser] = useState({})
+  const reloadPage = () => {
+    userService
+      .getAllUsers()
+      .then(({ data }) => setLoadUser(data))
+      .catch((error) => console.log(error));
+  };
 
-    const reloadPage = () => {
-        userService
-            .getAllUsers()
-            .then(({ data }) => setLoadUser(data))
-            .catch(error => console.log(error))
-    }
+  useEffect(() => reloadPage(), {});
 
-    useEffect(() => reloadPage(), ({}))
+  return (
+    <ReloadContext.Provider value={{ loadUser, reloadPage }}>
+      {props.children}
+    </ReloadContext.Provider>
+  );
+};
 
-    return (
-        <ReloadContext.Provider value={{ loadUser, reloadPage }}>
-            {props.children}
-        </ReloadContext.Provider>
-    )
-}
-
-export { ReloadContext, LoadPageWrapper }
+export { ReloadContext, LoadPageWrapper };

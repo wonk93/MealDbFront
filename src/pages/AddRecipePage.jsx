@@ -1,4 +1,4 @@
-import CreateRecipeform from '../components/CreateRecipeform';
+import CreateRecipeform from "../components/CreateRecipeform";
 
 function AddRecipePage() {
   return (
@@ -10,6 +10,3 @@ function AddRecipePage() {
 }
 
 export default AddRecipePage;
-
-
-

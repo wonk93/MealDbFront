@@ -1,15 +1,15 @@
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ingredientService from "../services/ingredient.service";
 
 function IngredientPage() {
   const { id } = useParams();
   const [ingredient, setIngredient] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
-    ingredientService.getOneById(id)
+    ingredientService
+      .getOneById(id)
       .then((response) => {
         setIngredient(response.data);
       })
@@ -19,17 +19,16 @@ function IngredientPage() {
   }, [id]);
 
   return (
-    <div>
+    <article>
       {ingredient ? (
         <div>
-          <h1>{ingredient.imageURL}</h1>
-          <p>{ingredient.ingredient}</p>
+          <h1>{ingredient.ingredients}</h1>
         </div>
       ) : (
         <p>Cargando ingrediente...</p>
       )}
-      <button onClick={()=>navigate(-1)}>Go back</button>
-    </div>
+      <button onClick={() => navigate(-1)}>Go back</button>
+    </article>
   );
 }
 

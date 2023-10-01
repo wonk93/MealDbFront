@@ -1,4 +1,4 @@
-import CreateIngredientform from '../components/CreateIngredientform';
+import CreateIngredientform from "../components/CreateIngredientform";
 
 function AddIngredientPage() {
   return (
@@ -10,8 +10,3 @@ function AddIngredientPage() {
 }
 
 export default AddIngredientPage;
-
-
-
-
-

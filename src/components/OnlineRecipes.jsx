@@ -9,7 +9,7 @@ function OnlineRecipes() {
   let [searchTerm, setRecipeName] = useState("");
 
   const handleInputChange = (event) => {
-    setRecipeName( event.target.value );
+    setRecipeName(event.target.value);
   };
 
   const navigateToRandomOnlineRecipe = () => {
@@ -44,17 +44,14 @@ function OnlineRecipes() {
                 <Button variant="primary" onClick={searchRecipe}>
                   Búsqueda
                 </Button>
-                                
+
                 <Button
                   variant="success"
                   onClick={navigateToRandomOnlineRecipe}
                 >
                   Receta aleatoria
                 </Button>
-                <Button
-                  variant="success"
-                  onClick={navigateToAllCategories}
-                >
+                <Button variant="success" onClick={navigateToAllCategories}>
                   Todas las categorias
                 </Button>
               </ButtonGroup>

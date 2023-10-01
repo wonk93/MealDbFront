@@ -39,9 +39,7 @@ export const AuthContextWrapper = ({ children }) => {
       .verify(token)
       .then((user) => {
         setLoading(false);
-        userService
-          .getCurrentUser()
-          .then(({ data }) => setUser(data));
+        userService.getCurrentUser().then(({ data }) => setUser(data));
       })
       .catch((err) => {
         logout();

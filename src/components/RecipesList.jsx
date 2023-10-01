@@ -17,14 +17,12 @@ function RecipesList() {
     setRecipeName(event.target.value);
   };
 
-  const searchRecipe = (e) => {    
+  const searchRecipe = (e) => {
     e.preventDefault();
-    setLoading(true); 
+    setLoading(true);
     recipeService
-      .getOneByQuery({recipeQuery:recipeName}) 
+      .getOneByQuery({ recipeQuery: recipeName })
       .then((response) => {
-        console.log(recipeName);
-        console.log("hola");
         setRecipes(response.data);
         setLoading(false);
       })
@@ -33,7 +31,6 @@ function RecipesList() {
         setLoading(false);
       });
   };
-console.log(recipes);
   useEffect(() => {
     setLoading(true);
     recipeService
@@ -73,7 +70,11 @@ console.log(recipes);
                 </NavLink>
               </td>
               <td>
-                <img src={recipe.image} title={recipe.title} alt={recipe.title} />
+                <img
+                  src={recipe.image}
+                  title={recipe.title}
+                  alt={recipe.title}
+                />
               </td>
               <td>{recipe.instructions}</td>
             </tr>
@@ -83,7 +84,9 @@ console.log(recipes);
 
       <Form onSubmit={searchRecipe}>
         <Form.Group className="mb-3" controlId="home-recipe-form">
-          <Form.Label>Busca recetas propias por nombre o crea una nueva:</Form.Label>
+          <Form.Label>
+            Busca recetas propias por nombre o crea una nueva:
+          </Form.Label>
           <br />
           <div className="input-group">
             <Form.Control

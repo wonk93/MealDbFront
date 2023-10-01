@@ -24,8 +24,8 @@ function OnlineRecipeSearch() {
             <h3>{recipe.strMeal}</h3>
             <p>{recipe.strInstructions}</p>
             <Link to={"/"}>
-      <button>Go back</button>
-    </Link>
+              <button>Go back</button>
+            </Link>
           </div>
         ))
       ) : (

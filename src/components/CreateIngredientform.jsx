@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 
-
 const CreateIngredientsForm = () => {
   const [ingredientsData, setingredientsData] = useState({
     imageURL: "",
@@ -12,8 +11,6 @@ const CreateIngredientsForm = () => {
   });
 
   const { imageURL, ingredients } = ingredientsData;
-
-  // const [loadingImage, setLoadingImage] = useState(false)
 
   const navigate = useNavigate();
 

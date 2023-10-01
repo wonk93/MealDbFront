@@ -7,9 +7,10 @@ function RecipePage() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
-    recipeService.getOneById(id)
+    recipeService
+      .getOneById(id)
       .then((response) => {
         setRecipe(response.data);
       })
@@ -25,7 +26,7 @@ function RecipePage() {
   const handleDeleteClick = async () => {
     try {
       await recipeService.deleteRecipe(id);
-      navigate('/'); // Redirige a la página principal u otra página después de borrar
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
@@ -50,11 +51,14 @@ function RecipePage() {
       ) : (
         <p>Cargando receta...</p>
       )}
-          <button onClick={()=>navigate(-1)}>Go back</button>
-        
+      <button onClick={() => navigate(-1)}>Go back</button>
 
-        {showEditModal && (
-        <EditRecipeForm recipe={recipe} onClose={handleCloseEditModal} getRecipe={() => {}} />
+      {showEditModal && (
+        <EditRecipeForm
+          recipe={recipe}
+          onClose={handleCloseEditModal}
+          getRecipe={() => {}}
+        />
       )}
     </article>
   );

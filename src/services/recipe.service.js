@@ -1,4 +1,3 @@
-
 import apiInstace from "./apiInstance";
 
 class RecipeService {
@@ -36,4 +35,3 @@ class RecipeService {
 const recipeService = new RecipeService();
 
 export default recipeService;
-

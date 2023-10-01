@@ -1,8 +1,6 @@
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import './../css/RandomOnline.css';
-
+import "./../css/RandomOnline.css";
 
 function RandomOnlineRecipe() {
   const [randomRecipe, setRandomRecipe] = useState(null);
@@ -37,7 +35,3 @@ function RandomOnlineRecipe() {
 }
 
 export default RandomOnlineRecipe;
-
-
-
-
